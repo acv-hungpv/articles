@@ -28,7 +28,7 @@ ApplicationRecord.connection.execute(
 "ALTER SEQUENCE #{table}_id_seq RESTART WITH #{auto_inc_val}"
 )
 
-Article.create!(title: 'First article inspection',like: 0, published: false )
+Article.create!(title: 'First article inspection',like: 0 )
 
 Text.create!(headline: 'first', trinhtuhienthi: 1,cauvan: 'A first article inspection (FAI) is a design verification and design', like: 0, article_id: 1)
 Text.create!(headline: 'second', trinhtuhienthi: 2,cauvan: 'a formal method of providing a reported measurement for a given manufacturing process. Both the supplier ', like: 0, article_id: 1)

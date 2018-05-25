@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2018_05_25_073234) do
   create_table "articles", force: :cascade do |t|
     t.text "title"
     t.integer "like"
-    t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

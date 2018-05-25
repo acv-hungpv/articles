@@ -40,5 +40,5 @@ class Article < ApplicationRecord
 
   def increaseLike
     self.like += 1
-  end
+  end 
 end
