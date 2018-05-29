@@ -1,8 +1,10 @@
 class Text < ApplicationRecord
   belongs_to :article
 
+  validates :like, presence: true, numericality: { greater_than_or_equal_to: 0}
+
   def currentLike
-    self.like
+    return self.like
   end
   
   def increaseLike

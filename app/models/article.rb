@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   has_many :images
 
   validates :title, presence: true
-  validates :like, presence: true, numericality: { greater_than: -1}
+  validates :like, presence: true, numericality: { greater_than_or_equal_to: 0}
   
   def content_text_and_url_image
     contentText = Text.includes(:article).where(article_id: self.id).references(:article).pluck(:cauvan)
@@ -38,12 +38,12 @@ class Article < ApplicationRecord
   end
 
   def currentLike
-    self.like
+    return self.like
   end
 
   def increaseLike
     self.like += 1
     self.save
     return self.like
-  end 
+  end
 end
