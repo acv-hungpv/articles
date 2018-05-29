@@ -1,6 +1,9 @@
 class Article < ApplicationRecord
   has_many :texts
   has_many :images
+
+  validates :title, presence: true
+  validates :like, presence: true, numericality: { greater_than: -1}
   
   def content_text_and_url_image
     contentText = Text.includes(:article).where(article_id: self.id).references(:article).pluck(:cauvan)
@@ -23,11 +26,11 @@ class Article < ApplicationRecord
   end
 
   def is_published
-    !self.id.nil?
+    return !self.id.nil?
   end
 
   def is_completed
-    self.is_published && self.created_at < DateTime.now
+    return self.is_published && self.created_at < DateTime.now
   end
 
   def make_completed
@@ -40,5 +43,7 @@ class Article < ApplicationRecord
 
   def increaseLike
     self.like += 1
+    self.save
+    return self.like
   end 
 end
